@@ -50,11 +50,26 @@ a {
   cursor: pointer;
 }
 
+.metro-nav .toggle .menu,
+.metro-nav .toggle.show .close {
+  display: block;
+}
+
+.metro-nav .toggle.show .menu,
+.metro-nav .toggle .close {
+  display: none;
+}
+
 .metro-nav .brand {
   float: left;
   height: 50px;
   padding: 15px;
   line-height: 20px;
+}
+
+.metro-nav .toggle:hover,
+.metro-nav .brand:hover {
+  background-color: rgba(100, 100, 100, 0.5);  /* #646464 */
 }
 
 .metro-nav .text {
@@ -65,9 +80,20 @@ a {
 }
 
 .metro-nav .nav {
+  position: relative;
+  z-index: 0;
   height: calc(100vh - 50px);
   background-color: rgba(51, 51, 51, 0.8);  /* #333 */
   overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.1s ease-out,
+              opacity 0.1s ease-out;
+}
+
+.metro-nav .nav.show {
+  visibility: visible;
+  opacity: 1;
 }
 
 .metro-nav .nav ul,
@@ -84,11 +110,14 @@ a {
   height: 100px;
   width: calc(50% - 10px);
   margin: 5px;
+  overflow: hidden;
   word-break: break-all;
 }
 
 .metro-nav .nav li.lg {
   width: calc(100% - 10px);
+}
+
 }
 
 .metro-nav .nav li:before {
@@ -101,31 +130,45 @@ a {
   height: 100%;
 }
 
+.metro-nav .nav li.image:before {
+  opacity: 0.75;
+  transition: opacity 0.1s ease-out;
+}
+
+.metro-nav .nav li:not(.image):hover {
+  background-color: rgb(190, 190, 190);  /* #bebebe */
+}
+
+.metro-nav .nav li:hover:before {
+  opacity: 0.5;
+}
+
+.metro-nav .nav li.image:hover:before {
+  opacity: 0.25;
+}
+
 .metro-nav .nav li a {
   position: relative;
   display: flex;
   align-items: center;  /* Center vertical */
   justify-content: center;  /* Center horizontal, short text */
-  text-align: center;  /* Center horizontal. long text */
+  text-align: center;  /* Center horizontal, long text */
   height: 100%;
 }
 
-.metro-nav .toggle .menu,
-.metro-nav .toggle.show .close,
-.metro-nav .nav.show {
-  display: block;
+.metro-nav .nav li .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.1s ease-out;
 }
 
-.metro-nav .toggle.show .menu,
-.metro-nav .toggle .close,
-.metro-nav .nav {
-  display: none;
-}
-
-.metro-nav .toggle:hover,
-.metro-nav .brand:hover,
-.metro-nav .nav li:hover:before {
-  background-color: rgba(100, 100, 100, 0.5);  /* #646464 */
+.metro-nav .nav li:hover .bg {
+  transform: scale(1.1);
 }
 
 @media (min-width: 540px) {
@@ -205,78 +248,97 @@ a {
   }
 }*/
 
-.red {
+.red:not(.image),
+.red:before {
   background-color: #f44336;  /* material_red_500 */
 }
 
-.pink {
+.pink:not(.image),
+.pink:before {
   background-color: #e91e63;  /* material_pink_500 */
 }
 
-.purple {
+.purple:not(.image),
+.purple:before {
   background-color: #9c27b0;  /* material_purple_500 */
 }
 
-.deeppurple {
+.deeppurple:not(.image),
+.deeppurple:before {
   background-color: #673ab7;  /* material_deep_purple_500 */
 }
 
-.indigo {
+.indigo:not(.image),
+.indigo:before {
   background-color: #3f51b5;  /* material_indigo_500 */
 }
 
-.blue {
+.blue:not(.image),
+.blue:before {
   background-color: #2196f3;  /* material_blue_500 */
 }
 
-.lightblue {
+.lightblue:not(.image),
+.lightblue:before {
   background-color: #03a9f5;  /* material_light_blue_500 */
 }
 
-.cyan {
+.cyan:not(.image),
+.cyan:before {
   background-color: #00bcd4;  /* material_cyan_500 */
 }
 
-.teal {
+.teal:not(.image),
+.teal:before {
   background-color: #009688;  /* material_teal_500 */
 }
 
-.green {
+.green:not(.image),
+.green:before {
   background-color: #4caf50;  /* material_green_500 */
 }
 
-.lightgreen {
+.lightgreen:not(.image),
+.lightgreen:before {
   background-color: #8bc34a;  /* material_light_green_500 */
 }
 
-.lime {
+.lime:not(.image),
+.lime:before {
   background-color: #cddc39;  /* material_lime_500 */
 }
 
-.yellow {
+.yellow:not(.image),
+.yellow:before {
   background-color: #ffeb3b;  /* material_yellow_500 */
 }
 
-.amber {
+.amber:not(.image),
+.amber:before {
   background-color: #ffc107;  /* material_amber_500 */
 }
 
-.orange {
+.orange:not(.image),
+.orange:before {
   background-color: #ff9800;  /* material_orange_500 */
 }
 
-.deeporange {
+.deeporange:not(.image),
+.deeporange:before {
   background-color: #ff5722;  /* material_deep_orange_500 */
 }
 
-.brown {
+.brown:not(.image),
+.brown:before {
   background-color: #795548;  /* material_brown_500 */
 }
 
-.grey {
+.grey:not(.image),
+.grey:before {
   background-color: #939393;  /* material_grey_500 */
 }
 
-.bluegrey {
+.bluegrey:not(.image),
+.bluegrey:before {
   background-color: #607d8b;  /* material_blue_grey_500 */
 }
