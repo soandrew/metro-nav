@@ -102,6 +102,7 @@ a {
   margin: 0;
   padding: 0;
   list-style: none;
+  perspective: 1000px;
 }
 
 .metro-nav .nav li {
@@ -112,12 +113,20 @@ a {
   margin: 5px;
   overflow: hidden;
   word-break: break-all;
+  opacity: 0;
+  transform: rotateY(90deg);
+  transform-origin: left;
+  transition: opacity 0.2s ease-out,
+              transform 0.2s ease-out;
 }
 
 .metro-nav .nav li.lg {
   width: calc(100% - 10px);
 }
 
+.metro-nav .nav.show li {
+  opacity: 1;
+  transform: rotateY(0deg);
 }
 
 .metro-nav .nav li:before {
