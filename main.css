@@ -50,13 +50,13 @@ a {
   cursor: pointer;
 }
 
-.metro-nav .toggle .menu,
-.metro-nav .toggle.show .close {
+.metro-nav .toggle i:first-child,
+.metro-nav .toggle.show i:last-child {
   display: block;
 }
 
-.metro-nav .toggle.show .menu,
-.metro-nav .toggle .close {
+.metro-nav .toggle.show i:first-child,
+.metro-nav .toggle i:last-child {
   display: none;
 }
 
@@ -190,8 +190,7 @@ a {
     width: 440px;  /* One column, two lg wide */
   }
 
-  .metro-nav .nav li,
-  .metro-nav .nav li.sm {
+  .metro-nav .nav li {
     width: 100px;
     height: 100px;
   }
