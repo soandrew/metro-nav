@@ -33,3 +33,7 @@ The tile colours available draws from [Google's Material Design Colour Palette](
  - `blue-grey` or `blue-gray`
 
 For background images, mark the list item with the `image` class and include your image as an `img` with the `bg` class.
+
+## Example
+
+[See it in action!](https://soandrew.github.io/metro-nav)
