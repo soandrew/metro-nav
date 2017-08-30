@@ -32,6 +32,7 @@ a {
   left: 0;
   width: 100%;
   color: #fff;
+  pointer-events: none;
 }
 
 .metro-nav .header {
@@ -39,6 +40,7 @@ a {
   z-index: 1;
   background-color: #333;  /* Black */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
 }
 
 .metro-nav .toggle {
@@ -89,6 +91,7 @@ a {
   opacity: 0;
   transition: visibility 0.1s ease-out,
               opacity 0.1s ease-out;
+  pointer-events: auto;
 }
 
 .metro-nav .nav.show {
