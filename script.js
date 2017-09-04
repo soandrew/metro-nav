@@ -8,6 +8,7 @@
   const FADE_TIME = 0.1;  // Time for nav to fade in
   const ROTATE_TIME = 0.2;  // Time for tiles to rotate
   var delays = [];
+  var n = 0;
   function calculateDelays() {
     // Sort tiles by left offset
     tiles.sort(function(a, b) {
@@ -25,6 +26,8 @@
       // Save delay for current tile
       delays[i] = delay;
     });
+    // Cache delays.length
+    n = delays.length;
   }
   calculateDelays();  // Initial call
 
@@ -34,15 +37,17 @@
     button.classList.toggle('show');
     nav.classList.toggle('show');
     // Add animation delays either in forward or reverse
-    tiles.forEach(function(tile, i) {
-      if (button.classList.contains('show')) {
-        nav.style['transition-delay'] = '';
+    if (button.classList.contains('show')) {
+      nav.style['transition-delay'] = '';
+      tiles.forEach(function(tile, i) {
         tile.style['transition-delay'] = delays[i] + FADE_TIME + 's';
-      } else {
-        tile.style['transition-delay'] = delays[delays.length - i - 1] + 's';
-        nav.style['transition-delay'] = delays[delays.length - 1] + ROTATE_TIME + 's';
-      }
-    });
+      });
+    } else {
+      tiles.forEach(function(tile, i) {
+        tile.style['transition-delay'] = delays[n - 1] - delays[i] + 's';
+      });
+      nav.style['transition-delay'] = delays[n - 1] + ROTATE_TIME + 's';
+    }
   };
   // Add click background to dismiss handler
   nav.onclick = function() {
